@@ -44,5 +44,8 @@
 //   img.src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTzO8D_a-4KQvLMrJtyfLhqTZJjwWbhXV373XTI_fngfqCAdfddotgnkzlypgMstlgHsybk_n5SZ4sGNB6_oi6_8ALPWGgxrWtODaXWkoOU"
 // }
 
-
+// ------------child Node-----------//
+//    const productImg = cartBtn.parentNode.parentNode.parentNode
+//     .childNodes[1].childNodes[1].src;
+//     console.log(productImg);
 
