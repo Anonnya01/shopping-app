@@ -5,18 +5,13 @@ function getElement(id) {
   return element;
 }
 
-//------------ traverse way-----------//
+// ------------delegation-----------//
 
-// ---------quantity--------//
+getElement("product-box").addEventListener("click", function (e) {
+  if (e.target.className.includes("card-btn")) {
+    //  alert("clicked")
+    const cartBtn = e.target;
 
-// ---------cart button-------//
-const cartBtns = document.getElementsByClassName("card-btn");
-// console.log(cartBtns);
-
-for (let cartBtn of cartBtns) {
-  cartBtn.addEventListener("click", function () {
-    console.log("clicked");
-    // ---------getting values---------//
     const productImg =
       cartBtn.parentNode.parentNode.parentNode.children[0].children[0].src;
     console.log(productImg);
@@ -55,26 +50,76 @@ for (let cartBtn of cartBtns) {
     console.log(quantity);
     let currentQuantity = Number(quantity) + 1;
     getElement("total-quantity").innerText = currentQuantity;
-  });
-}
+  }
+});
 
-// ------------------buy--------//
+// ------------------buying--------//
 document.getElementById("btn-buy").addEventListener("click", function () {
   const cartContainer = getElement("cart-container");
 
   cartContainer.innerHTML = "";
   const button = getElement("btn-buy");
   button.innerText = "Purchase Done";
- 
 });
 
 // ------------------clear---------//
 document.getElementById("btn-clear").addEventListener("click", function () {
   const cartContainer = getElement("cart-container");
   cartContainer.innerHTML = "";
-   getElement("total-quantity").innerText=0
-   getElement("total-price").innerText =0
+  getElement("total-quantity").innerText = 0;
+  getElement("total-price").innerText = 0;
 });
+
+//------------ traverse way-----------//
+
+// ---------cart button-------//
+// const cartBtns = document.getElementsByClassName("card-btn");
+// // console.log(cartBtns);
+
+// for (let cartBtn of cartBtns) {
+//   cartBtn.addEventListener("click", function () {
+//     console.log("clicked");
+// ---------getting values---------//
+//     const productImg =
+//       cartBtn.parentNode.parentNode.parentNode.children[0].children[0].src;
+//     console.log(productImg);
+//     const productTitle = cartBtn.parentNode.parentNode.children[0].innerText;
+//     console.log(productTitle);
+//     const productPrice =
+//       cartBtn.parentNode.parentNode.children[2].children[0].innerText;
+//     console.log(productPrice);
+
+//     //  -------------------------------------------//
+//     // -------------total price----------//
+//     const totalPrice = getElement("total-price").innerText;
+
+//     const currentPrice = Number(productPrice) + Number(totalPrice);
+//     getElement("total-price").innerText = currentPrice;
+
+//     // -----------cart container-----------//
+
+//     const cartContainer = getElement("cart-container");
+
+//     const newCart = document.createElement("div");
+
+//     newCart.innerHTML = `
+//     <div class="flex items-center justify-around bg-gray-200 rounded mb-3">
+//     <img src="${productImg}" class="w-15" alt="">
+//     <div class="">
+//     <h2 class="font-bold">${productTitle}</h2>
+//     <h2>${productPrice} TK</h2>
+//     </div>
+//     </div>
+
+//        `;
+//     cartContainer.append(newCart);
+//     // -----------------quantity----------//
+//     const quantity = getElement("total-quantity").innerText;
+//     console.log(quantity);
+//     let currentQuantity = Number(quantity) + 1;
+//     getElement("total-quantity").innerText = currentQuantity;
+//   });
+// }
 
 // treditional way
 // document.getElementById("btn-k1").addEventListener("click", function () {
