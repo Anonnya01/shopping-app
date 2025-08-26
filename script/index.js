@@ -5,13 +5,9 @@ function getElement(id) {
   return element;
 }
 
-
-
-
 //------------ traverse way-----------//
 
 // ---------quantity--------//
-
 
 // ---------cart button-------//
 const cartBtns = document.getElementsByClassName("card-btn");
@@ -30,9 +26,7 @@ for (let cartBtn of cartBtns) {
       cartBtn.parentNode.parentNode.children[2].children[0].innerText;
     console.log(productPrice);
 
-
-    
-//  -------------------------------------------//
+    //  -------------------------------------------//
     // -------------total price----------//
     const totalPrice = getElement("total-price").innerText;
 
@@ -56,16 +50,31 @@ for (let cartBtn of cartBtns) {
     
        `;
     cartContainer.append(newCart);
+    // -----------------quantity----------//
+    const quantity = getElement("total-quantity").innerText;
+    console.log(quantity);
+    let currentQuantity = Number(quantity) + 1;
+    getElement("total-quantity").innerText = currentQuantity;
   });
-
-
-// -----------------quantity----------//
-
-
-
-
-
 }
+
+// ------------------buy--------//
+document.getElementById("btn-buy").addEventListener("click", function () {
+  const cartContainer = getElement("cart-container");
+
+  cartContainer.innerHTML = "";
+  const button = getElement("btn-buy");
+  button.innerText = "Purchase Done";
+ 
+});
+
+// ------------------clear---------//
+document.getElementById("btn-clear").addEventListener("click", function () {
+  const cartContainer = getElement("cart-container");
+  cartContainer.innerHTML = "";
+   getElement("total-quantity").innerText=0
+   getElement("total-price").innerText =0
+});
 
 // treditional way
 // document.getElementById("btn-k1").addEventListener("click", function () {
